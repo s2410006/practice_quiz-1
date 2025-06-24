@@ -40,14 +40,16 @@ function showQuestion() {
     btn.className = 'option-btn';
     btn.textContent = decodeHTMLEntities(option);
     btn.onclick = () => {
-      if (option === q.correct_answer) {
-        score++;
-        alert('正解！');
-      } else {
-        alert(`不正解！正解は「${decodeHTMLEntities(q.correct_answer)}」です`);
-      }
-      document.getElementById('score').textContent = `スコア: ${score}`;
-      nextBtn.disabled = false;
+       if (option === q.correct_answer) {
+
+            alert('正解！');
+            document.getElementById('score').textContent = currentScore++;
+            document.body.style.backgroundColor = "#FFFFFF";
+            currentIndex++;
+            showQuestion();
+          } else {
+            document.body.style.backgroundColor = "#FF0000";
+            alert('不正解!もう一度選んでください');
     };
     optionsEl.appendChild(btn);
   });
